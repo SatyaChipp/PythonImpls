@@ -1,0 +1,9 @@
+"""
+Run falcon/main.py to serve 
+api endpoints:
+/test
+/number
+/demo
+
+Tests in falcon/tests folder
+"""
