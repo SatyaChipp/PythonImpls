@@ -1,0 +1,38 @@
+# Complete the zombieCluster function below.
+###zombie 0 with connected string 110 is connect to itself(0), and to zombies 1 and 2 .. 
+input will be a square matrix. 
+#if zombie 1 i connectd to and 2 is connected to 3 then 1 is conn to 3- follow transitive property here
+
+10000
+01000
+00100
+00010
+00001
+(compare indexes here)
+Above we have  five cnnected zombie cluster -- try to make this test pass
+110
+110
+001
+
+from itertools import groupby
+def zombieCluster(zombies):
+    count=0
+    def len_iter(items):
+        return sum(1 for _ in items)
+    for item in zombies:
+        if max(len_iter(run) for val, run in groupby(list(item)) if val) %2 == 0:
+            count+=1
+    return count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    zombies_count = int(input())
+
+    zombies = []
+
+    for _ in range(zombies_count):
+        zombies_item = input()
+        zombies.append(zombies_item)
+
+    res = zombieCluster(zombies)
