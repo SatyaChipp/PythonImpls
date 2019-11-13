@@ -24,17 +24,22 @@ from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import Future
 from bs4 import BeautifulSoup
-
+import requests
 
 pool_t = ThreadPoolExecutor(3)#3 threads
 pool_p = ProcessPoolExecutor(3)#3 processes
 
+
 def download_extract(url):
+    resp = requests.get(url)
+    soup = BeautifulSoup(resp.content, 'html.parser')
+    print(list(soup.children))
 
 
 
-
-
+if __name__ == '__main__':
+    from subprocess import call
+    download_extract("https://scrapethissite.com")
 
 
 
